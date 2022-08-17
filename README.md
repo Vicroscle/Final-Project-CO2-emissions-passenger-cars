@@ -1,36 +1,36 @@
-# python-template
+### CO2 EMISSIONS PREDICTION OF PASSENGER CARS ###
+Prediction based on data from:
+European Environment Agency. Monitoring of CO2 emissions from passenger cars – Regulation (EU) 2019/631. url: https://www.eea.europa.eu/data-and-maps/data/co2-cars- emission-20
 
-Precondition:
-Windows users can follow the official microsoft tutorial to install python, git and vscode here:
+Workflow:
+- Data_Science_CO2_preprocessed_data.py
+- Data_Science_model_training.py
+- Data_Science_model_predictions.py
 
-- ​​https://docs.microsoft.com/en-us/windows/python/beginners
-- german: https://docs.microsoft.com/de-de/windows/python/beginners
+The predictions will be made based on the features vehicle pool and make, weigh, wheelbase, axle width, engine capacity and power, fuel type and fuel modus. This kind of prediction could be helpful, as an example, to gain a virtual information of the emissions while developing a new vehicle model before it could be really tested.
 
-## Visual Studio Code
+The target value that has been chosen is the Enedc (g/km) which is the old emissions measurement protocol, as the new one, the Ewltp (g/km) contains too less values in this dataset. The WLTP was developed to be more representative of real-world driving conditions, so it might be interesting for the future to have a data set which fully contains these values. In this case, target to be change in the code to Ewltp (g/km).
 
-This repository is optimized for [Visual Studio Code](https://code.visualstudio.com/) which is a great code editor for many languages like Python and Javascript. The [introduction videos](https://code.visualstudio.com/docs/getstarted/introvideos) explain how to work with VS Code. The [Python tutorial](https://code.visualstudio.com/docs/python/python-tutorial) provides an introduction about common topics like code editing, linting, debugging and testing in Python. There is also a section about [Python virtual environments](https://code.visualstudio.com/docs/python/environments) which you will need in development. There is also a [Data Science](https://code.visualstudio.com/docs/datascience/overview) section showing how to work with Jupyter Notebooks and common Machine Learning libraries.
+Only the German registrated cars have been chosen due to the high amount of instances. For further learning runs in the future, all the countries could be considered. In this case, the Feature "MS" Member State shouldn´t be removed in the pre-processing .py.
 
-The `.vscode` directory contains configurations for useful extensions like [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens0) and [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python). When opening the repository, VS Code will open a prompt to install the recommended extensions.
+The vehicle make has been target encoded, so a dictionary has to be created to make new predictions.
 
-## Development Setup
+The graphic/ploting analyse ,including some hyperparameter research and evaluation,can be found at the Jupyter Notebooks.
+
+Currently the KNN Model with the hyperparameters is the one minimazing at best the Mean Squared error.
+
+### REPOSITORY DEVELOPEMENT SETUP ###
 
 Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal) and run the setup script for your OS (see below). This will install a [Python virtual environment](https://docs.python.org/3/library/venv.html) with all packages specified in `requirements.txt`.
 
 ### Linux and Mac Users
-
 1. run the setup script: `./setup.sh` or `sh setup.sh`
 2. activate the python environment: `source .venv/bin/activate`
-3. run example code: `python src/hello.py`
-4. install new dependency: `pip install sklearn`
-5. save current installed dependencies back to requirements.txt: `pip freeze > requirements.txt`
-
 ### Windows Users
-
 1. run the setup script `.\setup.ps1`
 2. activate the python environment: `.\.venv\Scripts\Activate.ps1`
-3. run example code: `python src/hello.py`
-4. install new dependency: `pip install sklearn`
-5. save current installed dependencies back to requirements.txt: `pip freeze > requirements.txt`
+
+3. run example code: `python src/Example.py`
 
 Troubleshooting:
 
